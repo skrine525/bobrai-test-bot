@@ -1,18 +1,12 @@
 from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import CommandStart
-from aiogram.fsm.context import FSMContext
 
 
 router = Router()   # Роутер
 
-# Константы сообщений
-HELLO_MESSAGE_TEXT = "Привет! Я бот, который подскажет тебе погоду в любом городе мира!\n\nНапиши название города!"
-
 
 # Команда /start
 @router.message(CommandStart())
-async def start_command(message: Message, state: FSMContext):
-    await state.clear()
-    
-    await message.answer(text=HELLO_MESSAGE_TEXT)
+async def start_command(message: Message):
+    await message.answer(text=f"👋 Привет, {message.from_user.first_name}!\n\n🤖 Я бот, который подскажет вам погоду в любом городе мира!\n\n🏙 Напиши название города.")
