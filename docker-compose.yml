@@ -1,0 +1,8 @@
+services:
+  weather_test_bot:
+    build: .
+    image: weather_test_bot
+    container_name: weather_test_bot
+    env_file: "app.env"
+    command: ["python3", "main.py"]
+    restart: unless-stopped
